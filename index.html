@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Recipe App Tailwind</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        container: {
+          center: true,
+        },
+        extend: {
+          colors: {
+            clifford: '#da373d',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+      /* Chrome, Safari, Opera */
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      /* IE and Edge */
+      scrollbar-width: none;
+      /* Firefox */
+    }
+  </style>
+</head>
+
+<body class="font-['Poppins']">
+  <div class="container p-5">
+    <!-- Navbar -->
+    <nav class="flex flex-row justify-between">
+      <h1 class="text-xl font-semibold">Fauzan Recipe</h1>
+      <ul class="flex items-center gap-x-3">
+        <li>
+          <a href="#" class="font-semibold">Halo, Fauzan</a>
+        </li>
+        <li>
+          <a href="#" class="bg-indigo-500 text-white font-semibold px-6 py-2 rounded-full ">Login</a>
+        </li>
+      </ul>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Hero Section -->
+    <div class="p-[80px] flex flex-col gap-y-6 items-center justify-center text-center">
+      <h1 class="xl:text-5xl md:text-4xl sm:text-[30px] text-[26px] w-full font-bold capitalize">
+        Find Meal Your Ingredients
+      </h1>
+      <div class="flex flex-row ">
+        <input type="text"
+          class="border-2 border-r-0 border-indigo-500 w-full px-8 py-2 rounded-tl-full rounded-bl-full focus:outline-none"
+          placeholder="Search Recipe" id="searchInput">
+        <button type="submit" id="searchBtn" class="bg-indigo-500 px-5 py-3 rounded-tr-full rounded-br-full">
+          <i class="fa-solid fa-magnifying-glass text-white"></i>
+        </button>
+      </div>
+      <h1 class="xl:text-4xl md:text-3xl sm:text-[25px] text-[23px] w-full font-bold capitalize">Your Search Result:
+      </h1>
+      <span class="text-center font-semibold text-3xl hidden" id="notFound">No Result, Please Check Another
+        Recipe</span>
+    </div>
+    <!-- Hero Section End -->
+
+    <!-- Card -->
+    <div class="grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-3 mx-auto -mt-[65px]" id="meal">
+      <!-- Card 1 -->
+      <!-- <div class="max-w-full px-4 py-3 bg-white rounded-md shadow-lg dark:bg-gray-800">
+        <img src="image/coffe.jpg" class="rounded-lg object-cover" alt="">
+        <div>
+          <h1 class="mt-2 text-lg font-semibold text-gray-800 dark:text-white">Coffe
+          </h1>
+          <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Lorem ipsum dolor sit amet, consectetur adipisicing
+            elit.
+            Odio eligendi similique exercitationem optio libero vitae accusamus cupiditate laborum eos.</p>
+        </div>
+
+        <div class="py-5">
+          <a href="#" class="bg-indigo-500 text-white font-semibold py-2 px-5 rounded-full recipe-btn"
+          >Get Recipe</a>
+        </div>
+      </div> -->
+
+    </div>
+    <!-- Card -->
+  </div>
+
+  <!-- Modal baru -->
+  <div class="hidden meal-details-content" id="showModal">
+    <!-- <div class="fixed inset-0 z-50 flex items-center justify-center overflow-scroll no-scrollbar">
+      <div
+        class="rounded-2xl border border-blue-100 bg-white p-4 shadow-lg sm:p-6 lg:p-8 lg:max-w-xl max-w-md md:max-w-lg sm:max-w-md"
+        role="alert">
+        <div class="flex flex-col items-center gap-4 text-center">
+          <h2 class="font-semibold sm:text-lg lg:text-3xl uppercase">Meal Titles!</h2>
+          <span class="text-center bg-indigo-500 text-white text-sm px-5 py-2 rounded-full">Categories</span>
+          <img src="image/coffe.jpg" class="w-20 h-20 object-cover rounded-full" alt="">
+        </div>
+
+
+        <p class="mt-4 text-gray-500">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam ea quo unde vel adipisci
+          blanditiis voluptates eum. Nam, cum minima? Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Distinctio fuga quis officiis atque, deleniti possimus fugiat vero nesciunt minus, animi ullam optio cumque ut
+          veritatis suscipit? Adipisci in, nisi dolorem corrupti nostrum natus ratione aperiam explicabo, ipsam sit
+
+        </p>
+
+        <div class="mt-6 flex flex-row justify-between">
+          <a class="mt-2 inline-block w-full rounded-lg bg-red-500 px-7 py-3 text-center text-sm font-semibold text-white sm:mt-0 sm:w-auto"
+            href="#" id="cancelButton">
+            Cancel
+          </a>
+          <a class="inline-block w-full rounded-lg bg-indigo-500 px-5 py-3 text-center text-sm font-semibold text-white sm:w-auto"
+            href="#">
+            Watch Videos
+          </a>
+        </div>
+      </div>
+    </div> -->
+  </div>
+  <script src="app.js"></script>
+</body>
+
+</html>
